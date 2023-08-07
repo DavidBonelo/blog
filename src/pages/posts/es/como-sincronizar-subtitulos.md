@@ -16,13 +16,13 @@ La forma más fácil de re-sincronizar los subtítulos de varios archivos es usa
 
 La estructura de la carpeta debe verse así:
 
-![estructura de archivos](img/ss-folder.png)
+![estructura de archivos](./img/ss-folder.png)
 
 - Ejecutar el `RUN_ME.bat` que se encuentra dentro de la carpeta.
 
     Aparecerán varias opciones con números, para seleccionar la opción se escribe solo el número y se presiona enter:
 
-![Selection script option](img/ss-sub-type.png)
+![Selection script option](./img/ss-sub-type.png)
 
     - La mayoría de los subtítulos se encuentran en formato `.srt`.
     - Generalmente se usa la opción de subtítulos incrustados (embedded subs) puesto que es la manera más confiable. Por lo tanto se recomienda descargar videos que incluyan subtítulos.
@@ -30,10 +30,10 @@ La estructura de la carpeta debe verse así:
 
 El script extraerá los subtítulos incluidos en el video. Cuando termine, nos presentará un menú con todos los estilos presentes en los subtítulos extraidos:
 
-![Subtitle Styles](img/ss-sub-styles.png)
+![Subtitle Styles](./img/ss-sub-styles.png)
 
 Estos estilos son usados por los creadores de subtítulos para marcar diferentes tipos de subtítulos según el contenido. "Carteles" o "Signs" por ejemplo son usados para traducir texto escrito visible en la pantalla. "OP/ED" se refiere a subtítulos para el opening y el ending. Todos estos subtítulos adicionales posiblemente interfieran con el proceso de sincronización debido a que no son diálogos y pueden no estar presentes en los subtítulos que se quieren sincronizar. Por lo tanto se puede filtrar por los estilos de subtítulos que queramos se usen para el proceso de sincronizado. En este caso los estilos [1]Default y [3]Default-alt (dejando un espacio entre los números).
 
 Al terminar el proceso de sincronizado los subtítulos quedarán corregidos y renombrados:
 
-![Sync result](img/ss-sync-result.png)
+![Sync result](./img/ss-sync-result.png)
