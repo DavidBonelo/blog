@@ -1,3 +1,7 @@
+---
+layout: ../../../layouts/MarkdownPostLayout.astro
+pubDate: 2023-08-7
+---
 ## Guia para re-sincronizar subtítulos automáticamente.
 
 Lamentablemente cuando descargamos subtítulos de internet en nuestro idioma objetivo, muchas veces nos encontramos que estos no están sincronizados para la versión del video que tenemos descargado.

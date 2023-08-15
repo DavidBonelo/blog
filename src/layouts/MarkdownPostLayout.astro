@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout pageTitle="Blog">
+  <p>Escrito por <strong>David Bonelo</strong></p>
+  <p>
+    Publicado: {new Date(frontmatter.pubDate).toLocaleDateString()}
+    {
+      frontmatter.editDate && (
+        <span>
+          - Editado: {new Date(frontmatter.editDate).toLocaleDateString()}
+        </span>
+      )
+    }
+  </p>
+  <slot />
+</BaseLayout>

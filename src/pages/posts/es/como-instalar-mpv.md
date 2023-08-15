@@ -1,3 +1,8 @@
+---
+layout: ../../../layouts/MarkdownPostLayout.astro
+pubDate: 2023-08-10
+editDate: 2023-08-15
+---
 ## Guía para instalar el reproductor MPV.
 
 Mpv es un reproductor multimedia amado por ser rápido, liviando, soporta todo formato de video y audio, y además es extensible con plugins(scripts). Sin embargo no cuenta con un instalador, así que me tomé la tarea de listar todas las formas que existen para instalarlo:
