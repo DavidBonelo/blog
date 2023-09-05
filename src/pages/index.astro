@@ -1,8 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Blog";
+const pageTitle = "David Bonelo Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
+  <h2>My posts:</h2>
+  <ul>
+    <li><a href="posts/es/como-instalar-mpv">Guía para instalar el reproductor MPV.</a></li>
+    <li><a href="posts/es/como-sincronizar-subtitulos">Guia para re-sincronizar subtítulos automáticamente.</a></li>
+  </ul>
 </BaseLayout>
