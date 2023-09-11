@@ -39,10 +39,50 @@ function generateCells(rowsNumber) {
   return cells;
 }
 
+function getRandomRGB() {
+  return {
+    r: Math.round(Math.random() * 255),
+    g: Math.round(Math.random() * 255),
+    b: Math.round(Math.random() * 255),
+  };
+}
+
+function extractRGBValues(rgbString = "") {
+  const valuesString = rgbString.substring(
+    rgbString.indexOf("(") + 1,
+    rgbString.indexOf(")")
+  );
+  const values = valuesString.split(",");
+  const rgbValues = {
+    r: parseFloat(values[0]),
+    g: parseFloat(values[1]),
+    b: parseFloat(values[2]),
+  };
+  return rgbValues;
+}
+
+function darkenColor(rgbValues) {
+  const { r, g, b } = rgbValues;
+  return {
+    r: r < 25.5 ? 0 : r - 25.5,
+    g: g < 25.5 ? 0 : g - 25.5,
+    b: b < 25.5 ? 0 : b - 25.5,
+  };
+}
+
 window.addEventListener("mouseover", (e) => {
   const cell = e.target;
   if (cell.classList.contains("cell")) {
-    cell.classList.add("dark-cell");
+    if (!cell.classList.contains("colored")) {
+      const { r, g, b } = getRandomRGB();
+      cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      cell.classList.add("colored");
+    } else {
+      const rgb = extractRGBValues(cell.style.backgroundColor);
+      console.log(rgb);
+      const { r, g, b } = darkenColor(rgb);
+      cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
   }
 });
 
