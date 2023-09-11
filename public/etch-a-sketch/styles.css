@@ -1,0 +1,31 @@
+:root {
+    --rowTotal: 16;
+    --gridSize: 35rem;
+    --cellSize: calc(var(--gridSize) / var(--rowTotal));
+}
+
+body {
+    margin: 0;
+}
+
+#grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid black;
+    width: var(--gridSize);
+    height: var(--gridSize);
+}
+
+.cell {
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: var(--cellSize);
+    aspect-ratio: 1;
+    transition-duration: 2s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.dark-cell {
+    background-color: black;
+}
