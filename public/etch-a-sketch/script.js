@@ -1,9 +1,4 @@
-const grid = document.getElementById("grid");
-const newGridButton = document.getElementById("new-grid");
-const r = document.querySelector(":root");
 let gridRowsTotal = 16;
-
-newGridButton.addEventListener("click", (_) => newGrid());
 
 function newGrid() {
   const userRows = parseInt(
@@ -70,18 +65,30 @@ function darkenColor(rgbValues) {
   };
 }
 
+function colorCell(cell) {
+  const { r, g, b } = getRandomRGB();
+  cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  cell.classList.add("colored");
+}
+function darkenCell(cell) {
+  const rgb = extractRGBValues(cell.style.backgroundColor);
+  const { r, g, b } = darkenColor(rgb);
+  cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
+
+const grid = document.getElementById("grid");
+const newGridButton = document.getElementById("new-grid");
+const r = document.querySelector(":root");
+
+newGridButton.addEventListener("click", (_) => newGrid());
+
 window.addEventListener("mouseover", (e) => {
   const cell = e.target;
   if (cell.classList.contains("cell")) {
-    if (!cell.classList.contains("colored")) {
-      const { r, g, b } = getRandomRGB();
-      cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-      cell.classList.add("colored");
+    if (cell.classList.contains("colored")) {
+      darkenCell(cell);
     } else {
-      const rgb = extractRGBValues(cell.style.backgroundColor);
-      console.log(rgb);
-      const { r, g, b } = darkenColor(rgb);
-      cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      colorCell(cell);
     }
   }
 });
