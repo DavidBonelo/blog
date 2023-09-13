@@ -1,0 +1,36 @@
+#display {
+    border: 2px solid blueviolet;
+    width: 800px;
+    height: 100px;
+    font-size: xx-large;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.pad {
+    display: flex;
+    align-items: start;
+}
+
+.num-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    border: 1px solid red;
+    align-content: flex-start;
+}
+
+.num-btn {
+    flex: auto;
+    flex-basis: 200px;
+}
+
+.fun-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid orange;
+}
