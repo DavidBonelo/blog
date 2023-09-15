@@ -59,6 +59,17 @@ function round(number, precision) {
   return Math.round(number * Math.pow(10, precision)) / Math.pow(10, precision);
 }
 
+function backspace() {
+  if (!operator && firstOperand) {
+    firstOperand = firstOperand.slice(0, -1);
+  } else if (secondOperand) {
+    secondOperand = secondOperand.slice(0, -1);
+  } else {
+    return;
+  }
+  display.innerText = display.innerText.slice(0, -1);
+}
+
 function handleNumKey(keyValue) {
   if (keyValue === ".") {
     periodButton.disabled = true;
@@ -75,6 +86,31 @@ function handleNumKey(keyValue) {
   console.log({ firstOperand, operator, secondOperand, prevAnswer });
 }
 
+function handleFunKey(keyValue) {
+  switch (keyValue) {
+    case "C":
+      clear();
+      break;
+    case "=":
+      if (operator != null && firstOperand != null && secondOperand != null)
+        operate(operator, firstOperand, secondOperand);
+      break;
+    case "⌫":
+      backspace();
+      break;
+    default: // presses an operation
+      if (operator != null && firstOperand != null && secondOperand != null) {
+        operate(operator, firstOperand, secondOperand);
+      }
+      if (!firstOperand) {
+        firstOperand = prevAnswer ?? 0;
+      }
+      operator = keyValue;
+      break;
+  }
+  console.log({ firstOperand, operator, secondOperand, prevAnswer });
+}
+
 const numButtons = document.querySelectorAll(".num-btn");
 numButtons.forEach((btn) =>
   btn.addEventListener("click", (e) => {
@@ -87,26 +123,7 @@ const funButtons = document.querySelectorAll(".fun-btn");
 funButtons.forEach((btn) =>
   btn.addEventListener("click", (e) => {
     const value = e.target.innerText;
-    switch (value) {
-      case "C":
-        clear();
-        break;
-      case "=":
-        if (operator != null && firstOperand != null && secondOperand != null)
-          operate(operator, firstOperand, secondOperand);
-        break;
-
-      default: // presses an operation
-        if (operator != null && firstOperand != null && secondOperand != null) {
-          operate(operator, firstOperand, secondOperand);
-        }
-        if (!firstOperand) {
-          firstOperand = prevAnswer ?? 0;
-        }
-        operator = value;
-        break;
-    }
-    console.log({ firstOperand, operator, secondOperand, prevAnswer });
+    handleFunKey(value);
   })
 );
 
