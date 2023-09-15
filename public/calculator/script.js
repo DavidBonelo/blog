@@ -86,6 +86,10 @@ function handleNumKey(keyValue) {
   console.log({ firstOperand, operator, secondOperand, prevAnswer });
 }
 
+function isOperator(keyValue) {
+  return ["+", "-", "x", "÷"].includes(keyValue);
+}
+
 function handleFunKey(keyValue) {
   switch (keyValue) {
     case "C":
@@ -99,6 +103,8 @@ function handleFunKey(keyValue) {
       backspace();
       break;
     default: // presses an operation
+      if (!isOperator(keyValue)) return;
+
       if (operator != null && firstOperand != null && secondOperand != null) {
         operate(operator, firstOperand, secondOperand);
       }
@@ -133,3 +139,18 @@ const displayObserver = new MutationObserver((_, __) => {
 });
 
 displayObserver.observe(display, { childList: true });
+
+window.addEventListener("keydown", (e) => {
+  let keyValue = e.key;
+  console.log(keyValue);
+  if (!isNaN(keyValue) || keyValue == ".") {
+    handleNumKey(keyValue);
+  } else {
+    if (keyValue == "/") e.preventDefault();
+    if (keyValue == "Enter") e.preventDefault();
+    keyValue = keyValue.replace("/", "÷");
+    keyValue = keyValue.replace("*", "x");
+    keyValue = keyValue.replace("Enter", "=");
+    handleFunKey(keyValue);
+  }
+});
