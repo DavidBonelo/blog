@@ -14,6 +14,10 @@ function multiply(num1, num2) {
   return num1 * num2;
 }
 function divide(num1, num2) {
+  if (num2 == 0) {
+    alert("wait, that's ilegal, you can't divide by zero!");
+    return 0;
+  }
   return num1 / num2;
 }
 
@@ -48,7 +52,11 @@ function operate(operation, num1, num2) {
   }
   clear();
   prevAnswer = result;
-  display.innerText = result;
+  display.innerText = round(result, 4);
+}
+
+function round(number, precision) {
+  return Math.round(number * Math.pow(10, precision)) / Math.pow(10, precision);
 }
 
 const numButtons = document.querySelectorAll(".num-btn");
@@ -87,7 +95,6 @@ funButtons.forEach((btn) =>
           firstOperand = prevAnswer ?? 0;
         }
         operator = value;
-
         break;
     }
     console.log({ firstOperand, operator, secondOperand, prevAnswer });
