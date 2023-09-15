@@ -61,9 +61,9 @@ function round(number, precision) {
 
 function handleNumKey(keyValue) {
   if (keyValue === ".") {
-    e.target.disabled = true;
+    periodButton.disabled = true;
     if (!firstOperand) firstOperand = "0";
-    else if (!secondOperand) secondOperand = "0";
+    else if (!secondOperand && operator) secondOperand = "0";
   }
   if (!operator) {
     firstOperand = firstOperand ? firstOperand + keyValue : keyValue;
