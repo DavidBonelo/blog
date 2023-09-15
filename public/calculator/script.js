@@ -59,18 +59,27 @@ function round(number, precision) {
   return Math.round(number * Math.pow(10, precision)) / Math.pow(10, precision);
 }
 
+function handleNumKey(keyValue) {
+  if (keyValue === ".") {
+    e.target.disabled = true;
+    if (!firstOperand) firstOperand = "0";
+    else if (!secondOperand) secondOperand = "0";
+  }
+  if (!operator) {
+    firstOperand = firstOperand ? firstOperand + keyValue : keyValue;
+    display.innerText = firstOperand;
+  } else {
+    secondOperand = secondOperand ? secondOperand + keyValue : keyValue;
+    display.innerText = secondOperand;
+  }
+  console.log({ firstOperand, operator, secondOperand, prevAnswer });
+}
+
 const numButtons = document.querySelectorAll(".num-btn");
 numButtons.forEach((btn) =>
   btn.addEventListener("click", (e) => {
     const value = e.target.innerText;
-    if (!operator) {
-      firstOperand = firstOperand ? firstOperand + value : value;
-      display.innerText = firstOperand;
-    } else {
-      secondOperand = secondOperand ? secondOperand + value : value;
-      display.innerText = secondOperand;
-    }
-    console.log({ firstOperand, operator, secondOperand, prevAnswer });
+    handleNumKey(value);
   })
 );
 
@@ -100,3 +109,10 @@ funButtons.forEach((btn) =>
     console.log({ firstOperand, operator, secondOperand, prevAnswer });
   })
 );
+
+const periodButton = document.getElementById("period-btn");
+const displayObserver = new MutationObserver((_, __) => {
+  periodButton.disabled = display.innerText.includes(".") ? true : false;
+});
+
+displayObserver.observe(display, { childList: true });
