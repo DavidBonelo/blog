@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <script src="index.js" defer></script>
+    <style>
+      .library {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .book {
+        border: 1px solid gray;
+        border-radius: 8px;
+        padding: 16px;
+        background-color: aliceblue;
+        width: max-content;
+      }
+
+      .book-title {
+        font-weight: bold;
+      }
+      dialog {
+        border: 1px solid gray;
+        border-radius: 8px;
+        padding: 16px;
+        background-color: aliceblue;
+        width: max-content;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .read-btn {
+        background-color: red;
+      }
+
+      .read {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <dialog id="dialog">
+      <form id="book-form" action="#" method="post">
+        <h2>New Book</h2>
+        <div class="form-row">
+          <label for="title">Title:</label>
+          <input name="title" id="title" required />
+        </div>
+        <div class="form-row">
+          <label for="author">Author:</label>
+          <input name="author" id="author" required />
+        </div>
+        <div class="form-row">
+          <label for="pages">Pages:</label>
+          <input
+            type="number"
+            name="pages"
+            value="69"
+            id="pages"
+            min="0"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <label for="totalPages">Total pages:</label>
+          <input
+            type="number"
+            name="totalPages"
+            value="420"
+            id="totalPages"
+            min="0"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <label for="read">Read:</label>
+          <input type="checkbox" name="read" value="1" id="read" />
+        </div>
+        <input type="submit" id="save-book" value="Save" />
+      </form>
+    </dialog>
+
+    <h1>My library</h1>
+    <button id="add-book">Add book</button>
+    <div class="library"></div>
+  </body>
+</html>
