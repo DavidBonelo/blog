@@ -15,9 +15,13 @@
     text-transform: capitalize;
 }
 
+.players {
+    grid-template-columns: 1fr 1fr;
+    margin: var(--typography-spacing-vertical);
+}
+
 .player {
     background-color: var(--card-sectionning-background-color);
-    margin: var(--typography-spacing-vertical);
     padding: var(--typography-spacing-vertical);
 }
 
@@ -27,7 +31,10 @@
 
 .winner{
     background-color: var(--primary-focus);
-    /* border: solid 5px red; */
+}
+
+.user-choices {
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .user-choices button {
