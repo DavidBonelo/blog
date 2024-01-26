@@ -2,6 +2,8 @@ const selections = ["rock", "scissors", "paper"];
 const userScorePara = document.getElementById("user-score");
 const machineScorePara = document.getElementById("machine-score");
 const tieScorePara = document.getElementById("tie-score");
+const userSelectionIcon = document.getElementById("user-choice");
+const machineSelectionIcon = document.getElementById("machine-choice");
 const roundResultPara = document.getElementById("round-result");
 
 const selectionButtons = document.querySelectorAll("button.selection");
@@ -23,6 +25,7 @@ function userRoundChoose(e) {
   const winner = playRound(userSelection, machineSelection);
 
   updateScores(userSelection, machineSelection, winner);
+  displaySelectionsIcon(userSelection, machineSelection, winner);
   displayResults();
 }
 
@@ -73,6 +76,33 @@ function gameOver() {
   disableUserChoices(true);
 }
 
+function getSelectionIcon(selection) {
+  switch (selection) {
+    case "rock":
+      return "✊";
+    case "paper":
+      return "✋";
+    case "scissors":
+      return "✌";
+
+    default:
+      return "❔";
+  }
+}
+
+function displaySelectionsIcon(userSelection, machineSelection, winner) {
+  userSelectionIcon.innerText = getSelectionIcon(userSelection);
+  machineSelectionIcon.innerText = getSelectionIcon(machineSelection);
+  userSelectionIcon.parentElement.classList.remove("winner");
+  machineSelectionIcon.parentElement.classList.remove("winner");
+  if (!winner) return;
+  if (winner === userSelection) {
+    userSelectionIcon.parentElement.classList.add("winner");
+  } else if (winner === machineSelection) {
+    machineSelectionIcon.parentElement.classList.add("winner");
+  }
+}
+
 function displayResults() {
   userScorePara.innerText = `User: ${userWinsCount}`;
   machineScorePara.innerText = `Machine: ${machineWinsCount}`;
@@ -87,6 +117,7 @@ function resetGame() {
   roundResultPara.innerText = "First player to score 5 points wins!";
   disableUserChoices(false);
   displayResults();
+  displaySelectionsIcon();
 }
 
 function disableUserChoices(bool) {

@@ -11,8 +11,23 @@
     margin-bottom: 0;
 }
 
-#round-result b{
+#round-result b {
     text-transform: capitalize;
+}
+
+.player {
+    background-color: var(--card-sectionning-background-color);
+    margin: var(--typography-spacing-vertical);
+    padding: var(--typography-spacing-vertical);
+}
+
+.player p {
+    font-size: 3em;
+}
+
+.winner{
+    background-color: var(--primary-focus);
+    /* border: solid 5px red; */
 }
 
 .user-choices button {
