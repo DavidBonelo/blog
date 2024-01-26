@@ -52,13 +52,13 @@ function playRound(userSelection, machineSelection) {
 function updateScores(userSelection, machineSelection, winner) {
   if (winner === userSelection) {
     userWinsCount++;
-    roundResultPara.innerText = `${userSelection} beats ${machineSelection}, the user wins this round!`;
+    roundResultPara.innerHTML = `<b>${userSelection}</b> beats <b>${machineSelection}</b>, the user wins this round!`;
   } else if (winner === machineSelection) {
     machineWinsCount++;
-    roundResultPara.innerText = `${machineSelection} beats ${userSelection}, the user wins this round!`;
+    roundResultPara.innerHTML = `<b>${userSelection}</b> is beaten by <b>${machineSelection}</b>, the machine wins this round!`;
   } else {
     tiesCount++;
-    roundResultPara.innerText = `${userSelection} vs ${machineSelection} ends in a tie!!`;
+    roundResultPara.innerHTML = `<b>${userSelection}</b> vs <b>${machineSelection}</b> ends in a tie!!`;
   }
   if (userWinsCount === 5 || machineWinsCount === 5) {
     gameOver();
@@ -70,13 +70,13 @@ function gameOver() {
   roundResultPara.innerText = `The ${
     userWinsCount > machineWinsCount ? "user" : "machine"
   } wins the game!`;
-  selectionButtons.forEach((button) => (button.disabled = true));
+  disableUserChoices(true);
 }
 
 function displayResults() {
-  userScorePara.innerText = `User score: ${userWinsCount}`;
-  machineScorePara.innerText = `Machine score: ${machineWinsCount}`;
-  tieScorePara.innerText = `Ties count: ${tiesCount}`;
+  userScorePara.innerText = `User: ${userWinsCount}`;
+  machineScorePara.innerText = `Machine: ${machineWinsCount}`;
+  tieScorePara.innerText = `Ties: ${tiesCount}`;
 }
 
 function resetGame() {
@@ -84,6 +84,11 @@ function resetGame() {
   userWinsCount = 0;
   machineWinsCount = 0;
   roundResultPara.classList.remove("game-over");
-  roundResultPara.innerText = "First player to score 5 wins!";
-  selectionButtons.forEach((button) => (button.disabled = false));
+  roundResultPara.innerText = "First player to score 5 points wins!";
+  disableUserChoices(false);
+  displayResults();
+}
+
+function disableUserChoices(bool) {
+  selectionButtons.forEach((button) => (button.disabled = bool));
 }

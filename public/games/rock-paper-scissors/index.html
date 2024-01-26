@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jan-Ken-Pon!</title>
     <script defer src="script.js"></script>
-    <link rel="stylesheet" href="styles.css" re>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../../css/pico.min.css" />
   </head>
 
   <body>
-    <h1>Rock Paper Scissors!</h1>
-    <h2>じゃんけんぽん!</h2>
-    <button id="rock" class="selection">Rock</button>
-    <button id="paper" class="selection">Paper</button>
-    <button id="scissors" class="selection">Scissors</button>
-    <p id="round-result">First player to score 5 wins!</p>
-    <div id="score">
-      <p id="user-score">User score: 0</p>
-      <p id="machine-score">Machine score: 0</p>
-      <p id="tie-score">Ties count: 0</p>
-    </div>
-    <button id="reset-game">Reset</button>
+    <main class="container" style="text-align: center">
+      <h1>Rock Paper Scissors! - じゃんけんぽん!</h1>
+      <div id="score">
+        <h4>Scoreboard:</h4>
+        <p id="user-score">User: 0</p>
+        <p id="machine-score">Machine: 0</p>
+        <p id="tie-score">Ties: 0</p>
+      </div>
+      <p id="round-result">First player to score 5 points wins!</p>
+      <button id="reset-game">Reset</button>
+      <div class="user-choices grid">
+        <button id="rock" class="selection">✊</button>
+        <button id="paper" class="selection">✋</button>
+        <button id="scissors" class="selection">✌</button>
+      </div>
+    </main>
   </body>
 </html>

@@ -1,4 +1,20 @@
-.game-over{
+.game-over {
     font-size: larger;
     font-weight: bold;
+}
+
+#score h4 {
+    margin-bottom: 16px;
+}
+
+#score p {
+    margin-bottom: 0;
+}
+
+#round-result b{
+    text-transform: capitalize;
+}
+
+.user-choices button {
+    font-size: 3em;
 }
